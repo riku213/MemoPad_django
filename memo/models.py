@@ -1,10 +1,17 @@
-from django.db import db
+from django.db import models
+from django.utils import timezone
+from datetime import datetime
 
-class Memo(db.Model):
-    # メモの本文（長いテキストを許可）
-    text = db.TextField()
-    # 更新日時（保存時に自動で現在時刻を入れる）
-    updated_at = db.DateTimeField(auto_now=True)
+# Memo Table
+class Memo(models.Model):
+    class Meta:
+        verbose_name = 'Memo Table'
+        verbose_name_plural = 'Memos Table'
+        db_table = 'memo'
+    
+    content = models.CharField(verbose_name='メモ', max_length=100, default="", blank=True, null=True)
+    created_at = models.DateTimeField(verbose_name='作成日時', default=timezone.now)
 
     def __str__(self):
-        return self.text
+        # OCRの都合上、アンダースコアは前後2つずつ（__str__）にしてください
+        return self.content + '(' + datetime.strftime(self.created_at, '%Y/%m/%d %H:%M:%S') + ')'
