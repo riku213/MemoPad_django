@@ -1,5 +1,4 @@
-{# Project: MemoPad #} {# List of Memo #} {% extends "base.html" %} {% block
-title %}List of Memo - MemoPad!{% endblock title %} {% block content %}
+{# Project: MemoPad #} {# List of Memo #} {% extends "base.html" %} {% block title %}List of Memo - MemoPad!{% endblock title %} {% block content %}
 <br />
 <div class="container">
   <!-- Content -->
@@ -20,20 +19,10 @@ title %}List of Memo - MemoPad!{% endblock title %} {% block content %}
         <td>{{ memo.content }}</td>
         <td>{{ memo.created_at }}</td>
         <td align="center">
-          <a
-            id="edit_btn"
-            href="{% url 'memo:edit_memo' pk=memo.id
-%}"
-            >Edit</a
-          >
+          <a id="edit_btn" href="{% url 'memo:edit_memo' pk=memo.id %}">Edit</a>
         </td>
         <td align="center">
-          <a
-            id="delete_btn"
-            href="{% url 'memo:delete_memo' pk=memo.id
-%}"
-            >Remove
-          </a>
+          <a id="delete_btn" href="{% url 'memo:delete_memo' pk=memo.id %}">Remove</a>
         </td>
       </tr>
       {% endfor %}
