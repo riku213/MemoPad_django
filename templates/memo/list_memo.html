@@ -3,6 +3,15 @@
 <div class="container">
   <!-- Content -->
   <h3>Listing of Memos</h3>
+
+  <form method="get" action="" class="form-inline" style="margin-bottom: 20px;">
+    <input type="text" name="q" value="{{ request.GET.q }}" placeholder="検索キーワードを入力" size="40">
+    <button type="submit">検索</button>
+    {% if request.GET.q %}
+      <a href="{% url 'memo:list_memo' %}">クリア</a>
+    {% endif %}
+  </form>
+
   {% if object_list|length == 0 %}
   <p>No Memo Found</p>
   {% else %}
