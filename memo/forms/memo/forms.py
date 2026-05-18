@@ -1,17 +1,19 @@
 from django import forms
 from memo.models import Memo # 先ほど作ったModelをインポート
+from django.core.validators import MinLengthValidator
 
-class MemoForm(forms.ModelForm): # DjangoのModelForm機能を継承
+class MemoForm(forms.ModelForm):
     class Meta:
         model = Memo
-        fields = ['id', 'content', 'created_at'] # 扱う項目を指定 
+        fields = ['id', 'content', 'created_at']
 
-    # メモ本文の入力欄設定
+    # メモ本文の入力欄設定（バリデーションを追加）
     content = forms.CharField(
         label="Content",
         max_length=30,
         required=True,
-        widget=forms.TextInput(attrs={'size': '58'}), # 入力枠の長さを指定 
+        widget=forms.TextInput(attrs={'size': '58'}),
+        validators=[MinLengthValidator(5, message="メモは5文字以上で入力してください。")]
     )
 
     # 作成日時の入力欄設定
@@ -19,5 +21,5 @@ class MemoForm(forms.ModelForm): # DjangoのModelForm機能を継承
         label='Created at',
         required=False,
         input_formats=['%Y-%m-%d'],
-        widget=forms.TextInput(attrs={'size': '12'}), # 日付用の枠サイズ 
+        widget=forms.TextInput(attrs={'size': '12'}),
     )
