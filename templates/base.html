@@ -1,5 +1,7 @@
 <!doctype html>
 {# Project: MwmoPad! (Hello World!) #}
+{% load static %}
+
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -8,6 +10,7 @@
     <title>{% block title %}{% endblock %}</title>
     {# --- css --- #}
     <meta http-equiv="Content-Type" content="text/css" />
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" >
     <style type="text/css">
       {% block extra_css %}{% endblock %}
     </style>
