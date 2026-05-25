@@ -1,4 +1,21 @@
-{# Project: MemoPad #} {# List of Memo #} {% extends "base.html" %} {% block title %}List of Memo - MemoPad!{% endblock title %} {% block content %}
+{# Project: MemoPad #} 
+{# List of Memo #} 
+{% extends "base.html" %} 
+{% block title %}List of Memo - MemoPad!{% endblock title %} 
+{% block content %}
+
+{% block extra_css %}
+body {
+  background-color: lightblue;
+}
+
+h3 {
+  color: white;
+  background-color: darkblue;
+  text-align: center;
+}
+{% endblock %}
+
 <br />
 <div class="container">
   <!-- Content -->
